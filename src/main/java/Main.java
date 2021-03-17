@@ -14,13 +14,13 @@ import java.util.List;
  * Main Class works as the front door of the project
  * the user can run the project using the command line
  * and this class is responsible of handling the format which the project is run in
- * this class contains only the main methode
+ * this class contains only the main method
  */
 
 public class Main {
 
     /**
-     * main methode which the user runs when starting the project
+     * main method which the user runs when starting the project
      * and initializes, handles everything.
      * <p>
      * the project meant to be run as a jar file.

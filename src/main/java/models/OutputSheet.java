@@ -35,7 +35,7 @@ public class OutputSheet {
     }
 
     /**
-     * getColor is a privet methode which is responsible of converting Strings
+     * getColor is a privet method which is responsible of converting Strings
      * as "W,G" into the index of the desired colors W-> white, G->Green.
      *
      * @param color string most cases of length==1 which represent the first char of the color in english
@@ -100,8 +100,8 @@ public class OutputSheet {
      * createCells method is responsible of creating cells in a specific rows
      * and with a specific horizontal position.
      *
-     * @param outputRows the rows list which the methode will create cells in
-     * @param h the horizontal position which the methode will start creating at h*5 column
+     * @param outputRows the rows list which the method will create cells in
+     * @param h the horizontal position which the method will start creating at h*5 column
      * @return returns a two demotions cells List
      */
     public static List<List<Cell>> createCells(List<Row> outputRows,int h){
@@ -119,7 +119,7 @@ public class OutputSheet {
     }
 
     /**
-     * updateCells methode is responsible of updating the created cells
+     * updateCells method is responsible of updating the created cells
      * with the write value from the ticket provided.
      *
      * @param cells the 2D cells list which contains the created cells
@@ -151,7 +151,7 @@ public class OutputSheet {
 
     }
 
-    /** applyStyleOnCells methode responsible of styling the cells
+    /** applyStyleOnCells method responsible of styling the cells
      * with the desired font and colors etc...
      *
      * @param cells the list of cells in a 2D list.
@@ -667,7 +667,7 @@ public class OutputSheet {
     }
 
     /**
-     *  mergeCells methode is responsible of merging cells together
+     *  mergeCells method is responsible of merging cells together
      *  to achieve the desired cells Style.
      *
      * @param outputSheet the output sheet

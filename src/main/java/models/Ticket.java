@@ -6,23 +6,10 @@ package models;
  * each Ticket object should be linked to a row in the input file
  * the main rule of this class is to hold data
  * and it is only setters and getters
- * with two constructors methode
+ * with two constructors method
  * one which gives the value "" to all params in case of nothing provided
  * the other takes all the values to params as input and places them to their params.
  *
- * @param chain which contains the ticket chain
- * @param base which contains the ticket base
- * @param wireType which contains the ticket wireType
- * @param process which contains the ticket process
- * @param skNumber which contains the ticket skNumber
- * @param followUp which contains the ticket followUp
- * @param corA which contains the ticket corA
- * @param corB which contains the ticket corB
- * @param wireCrossSection which contains the ticket wireCrossSection
- * @param insertion which contains the ticket insertion
- * @param post which contains the ticket post
- * @param sequence which contains the ticket sequence
- * @param size which contains the ticket size
  */
 public class Ticket {
 
