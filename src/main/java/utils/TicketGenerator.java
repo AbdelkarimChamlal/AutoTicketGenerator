@@ -10,8 +10,22 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * TicketGenerator class responsible for turning the input data
+ * from the xlsx file into a list of ticket objects
+ * while the first row represent the header
+ * and other rows convert to ticket objects
+ */
 public class TicketGenerator {
 
+    /**
+     * HeaderValuesDetector method fetches throw the header
+     * and create a hashMap to understand the schema
+     * of the input to detect the values of each column.
+     *
+     * @param header Row object which represent the first row of the input data
+     * @return a Hashmap which indicate the value of each column.
+     */
     private static HashMap<String, Integer> headerValuesDetector(Row header){
 
         Iterator<Cell> cellIterator = header.cellIterator();
@@ -69,6 +83,16 @@ public class TicketGenerator {
         return headerValues;
     }
 
+    /**
+     *  convertRowIntoTicket is responsible of matching
+     *  the input rows with the headerValues to initialize
+     *  a ticket object and place the value of each column
+     *  from the input into the correct parameter in the ticket object.
+     *
+     * @param inputRow Row object which represent a row in the xlsx input file
+     * @param headerValues hashMap which represents the values of each column of the input row
+     * @return Ticket object with the values from the input row
+     */
     private static Ticket convertRowIntoTicket(Row inputRow,HashMap<String,Integer> headerValues){
         Ticket ticket = new Ticket();
 
@@ -127,7 +151,11 @@ public class TicketGenerator {
         return ticket;
     }
 
-
+    /**
+     *
+     * @param inputSheet Sheet object which is taken from the input workBook
+     * @return list of Ticket objects which represent the input value converted into a Ticket object
+     */
     public static List<Ticket> generateTicketsFromSheet(Sheet inputSheet){
 
         Row header = inputSheet.getRow(0);

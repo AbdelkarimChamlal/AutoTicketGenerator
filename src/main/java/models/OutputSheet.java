@@ -64,7 +64,7 @@ public class OutputSheet {
 
         return  IndexedColors.WHITE.getIndex();
     }
-    
+
     /**
      * createRows responsible of creating new rows on the output sheet
      *
