@@ -7,9 +7,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * OutputSheet class is responsible of the design of the sheet and the style
+ * contains only static methods each responsible of a specific part of the sheet generation
+ */
+
 public class OutputSheet {
 
-
+    /**
+     *  defaultSheetAspects is responsible of setting the default
+     *  width and height of each cell on the output sheet.
+     *
+     * @param outputSheet takes the output sheet as an input
+     */
     public static void defaultSheetAspects(Sheet outputSheet){
 
         outputSheet.setDefaultColumnWidth(13);
@@ -24,6 +34,13 @@ public class OutputSheet {
 
     }
 
+    /**
+     * getColor is a privet methode which is responsible of converting Strings
+     * as "W,G" into the index of the desired colors W-> white, G->Green.
+     *
+     * @param color string most cases of length==1 which represent the first char of the color in english
+     * @return short value which represent the index of the color in the apache.poi library
+     */
     static Short getColor(String color){
         HashMap<String,Short> colors = new HashMap<>();
         colors.put("c",IndexedColors.WHITE1.getIndex());
@@ -47,8 +64,18 @@ public class OutputSheet {
 
         return  IndexedColors.WHITE.getIndex();
     }
-
-
+    
+    /**
+     * createRows responsible of creating new rows on the output sheet
+     *
+     * @param outputRows the row objects on the output sheet
+     * @param outputSheet the sheet object for the outputSheet
+     * @param horizontalPosition the horizontal position which the sheet stopped at
+     * @param verticalPosition the vertical Position represent
+     *                         how many tickets where already placed on the sheet vertically
+     *
+     * @return list of Rows at the verticalPosition
+     */
     public static List<Row> createRows(List<Row> outputRows, Sheet outputSheet,int horizontalPosition,int verticalPosition){
 
         if(horizontalPosition==0){
@@ -69,6 +96,14 @@ public class OutputSheet {
         return outputRows;
     }
 
+    /**
+     * createCells method is responsible of creating cells in a specific rows
+     * and with a specific horizontal position.
+     *
+     * @param outputRows the rows list which the methode will create cells in
+     * @param h the horizontal position which the methode will start creating at h*5 column
+     * @return returns a two demotions cells List
+     */
     public static List<List<Cell>> createCells(List<Row> outputRows,int h){
         List<List<Cell>> cells = new ArrayList<>();
         for (Row outputRow : outputRows) {
@@ -83,6 +118,13 @@ public class OutputSheet {
         return cells;
     }
 
+    /**
+     * updateCells methode is responsible of updating the created cells
+     * with the write value from the ticket provided.
+     *
+     * @param cells the 2D cells list which contains the created cells
+     * @param ticket the input data in Ticket object
+     */
     public static void updateCells(List<List<Cell>> cells, Ticket ticket){
         //first row
         cells.get(0).get(0).setCellValue(ticket.getCorA());
@@ -109,6 +151,12 @@ public class OutputSheet {
 
     }
 
+    /** applyStyleOnCells methode responsible of styling the cells
+     * with the desired font and colors etc...
+     *
+     * @param cells the list of cells in a 2D list.
+     * @param outputBook the output workBook to add the fonts to it.
+     */
     public static void applyStyleOnCells(List<List<Cell>> cells , Workbook outputBook){
         CellStyle cellStyle = null;
         Font font =null;
@@ -618,6 +666,14 @@ public class OutputSheet {
 
     }
 
+    /**
+     *  mergeCells methode is responsible of merging cells together
+     *  to achieve the desired cells Style.
+     *
+     * @param outputSheet the output sheet
+     * @param horizontalPosition the horizontal position which the generation is at the moment
+     * @param verticalPosition the vertical position which the generation is at the moment
+     */
     public static void mergeCells(Sheet outputSheet,int horizontalPosition,int verticalPosition){
 
         outputSheet.addMergedRegion(new CellRangeAddress(verticalPosition * 6, verticalPosition * 6, horizontalPosition * 5 + 1,  horizontalPosition * 5+2));
